@@ -1,0 +1,8 @@
+<div *ngFor="let task of taskManagerService.tasks">
+
+<p>{{task.name}}</p>
+<p>{{task.date}}</p>
+<p>{{task.status}}</p>
+<button (click) = taskManagerService.changeStatus(task.id)>complete</button>
+
+</div>
