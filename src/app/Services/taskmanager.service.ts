@@ -13,10 +13,10 @@ export class TaskManagerService {
   constructor(private http:HttpClient) {}
 
   getTasks(): any{
-   return this.http.get("localhost:3000/tasks")
+   return this.http.get("http://localhost:3000/tasks")
   }
   changeStatus(id:any) {
-    return this.http.get("localhost:3000/tasks/status/" + id).subscribe(
+    return this.http.get("http://localhost:3000/tasks/status/" + id).subscribe(
      (responseData:any) => this.tasks = responseData
    )
   }
