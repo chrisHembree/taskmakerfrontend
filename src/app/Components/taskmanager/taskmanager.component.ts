@@ -8,9 +8,7 @@ import { TaskManagerService } from 'src/app/Services/taskmanager.service';
 })
 export class TaskManagerComponent {
   constructor(public taskManagerService:TaskManagerService) {
-    this.taskManagerService.getTasks().subscribe((responseData:any) =>
-      taskManagerService.tasks = responseData
-    )
+    this.taskManagerService.getTasks()
   }
 
 }

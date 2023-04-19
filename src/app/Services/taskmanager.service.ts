@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Task } from '../task';
 
 
 @Injectable({
@@ -7,16 +8,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TaskManagerService {
 
-  tasks = [{ name: "Task 2", status: "false", date:"10/10/2023", id:"2"}]
+  tasks: Task[ ]= [ ]
 
 
   constructor(private http:HttpClient) {}
 
-  getTasks(): any{
-   return this.http.get("http://localhost:3000/tasks")
+  getTasks() {
+   return this.http.get<Task[]>("http://localhost:3000/tasks").subscribe(
+    (responseData:any) => this.tasks = responseData
+   )
   }
   changeStatus(id:any) {
-    return this.http.get("http://localhost:3000/tasks/status/" + id).subscribe(
+    return this.http.get<Task[]>("http://localhost:3000/tasks/status/" + id).subscribe(
      (responseData:any) => this.tasks = responseData
    )
   }
