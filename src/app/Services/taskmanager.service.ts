@@ -18,8 +18,11 @@ export class TaskManagerService {
     (responseData:any) => this.tasks = responseData
    )
   }
-  changeStatus(id:any) {
-    return this.http.get<Task[]>("http://localhost:3000/tasks/status/" + id).subscribe(
+  changeStatus(id: any, status: any) {
+     const data = {
+      task: { status: status }
+    };
+    return this.http.put<Task[]>("http://localhost:3000/tasks/status/" + id, status).subscribe(
      (responseData:any) => this.tasks = responseData
    )
   }
