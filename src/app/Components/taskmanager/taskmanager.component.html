@@ -1,5 +1,29 @@
+<div>
+
+  <form [formGroup] = "taskForm" (ngSubmit)="onSubmitTask()">
+    <label for="tasks">Create your task!</label>
+    <input
+    type="text"
+    formControlName="name">
+    <label for="date">date to complete!</label>
+    <input type="date" formControlName="date">
+    <button type="submit">Save that task!</button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
 <div *ngFor="let task of taskManagerService.tasks">
-  <p>{{task.name}}</p>
+
+  <p *ngIf= !task.status>{{task.name}}</p>
+  <p *ngIf= task.status  style="text-decoration: line-through;">{{task.name}}</p>
   <p>{{task.date}}</p>
   <p>{{task.status}}</p>
   <button (click)="taskManagerService.changeStatus(task.id, task.status)">complete</button>

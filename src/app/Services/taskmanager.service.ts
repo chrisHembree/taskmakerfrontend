@@ -8,7 +8,7 @@ import { Task } from '../task';
 })
 export class TaskManagerService {
 
-  tasks: Task[ ]= [ ]
+  tasks: Task[]= []
 
 
   constructor(private http:HttpClient) {}
@@ -18,10 +18,8 @@ export class TaskManagerService {
     (responseData:any) => this.tasks = responseData
    )
   }
+
   changeStatus(id: any, status: any) {
-     const data = {
-      task: { status: status }
-    };
     return this.http.put<Task[]>("http://localhost:3000/tasks/status/" + id, status).subscribe(
      (responseData:any) => this.tasks = responseData
    )
